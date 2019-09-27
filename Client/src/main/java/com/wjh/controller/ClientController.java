@@ -1,23 +1,29 @@
 package com.wjh.controller;
 
 import com.wjh.entity.Menu;
+import com.wjh.entity.MenuVO;
 import com.wjh.feign.MenuFeign;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/client")
 public class ClientController {
     @Autowired
     private MenuFeign menuFeign;
 
-    @GetMapping("/findAll/{index}/{limit}")
-    public List<Menu> findAll(@PathVariable("index") int index, @PathVariable("limit") int limit) {
+    @GetMapping("/findAll")
+    @ResponseBody
+    public MenuVO findAll(@RequestParam("page") int page, @RequestParam("limit") int limit) {
+        int index = (page - 1) * limit;
         return menuFeign.findAll(index, limit);
+    }
+
+    @GetMapping("/redirect/{location}")
+    public String redirect(@PathVariable("location") String location) {
+        return location;
     }
 }

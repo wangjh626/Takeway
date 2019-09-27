@@ -1,6 +1,7 @@
 package com.wjh.controller;
 
 import com.wjh.entity.Menu;
+import com.wjh.entity.MenuVO;
 import com.wjh.mapper.MenuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,7 +27,7 @@ public class MenuController {
     }
 
     @GetMapping("/findAll/{index}/{limit}")
-    public List<Menu> findAll(@PathVariable("index") int index, @PathVariable("limit") int limit) {
-        return menuMapper.findAll(index, limit);
+    public MenuVO findAll(@PathVariable("index") int index, @PathVariable("limit") int limit) {
+        return new MenuVO(0, "", 100, menuMapper.findAll(index, limit));
     }
 }
