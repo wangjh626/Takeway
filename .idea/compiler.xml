@@ -6,11 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Menu" />
         <module name="ConfigServer" />
-        <module name="Client" />
+        <module name="menu" />
+        <module name="Menu" />
+        <module name="order" />
         <module name="EurekaServer" />
+        <module name="configserver" />
         <module name="Order" />
+        <module name="eurekaserver" />
+        <module name="client" />
+        <module name="Client" />
       </profile>
     </annotationProcessing>
   </component>
@@ -22,6 +27,11 @@
       <module name="Menu" options="-parameters" />
       <module name="Order" options="-parameters" />
       <module name="Takeaway" options="-parameters" />
+      <module name="client" options="-parameters" />
+      <module name="configserver" options="-parameters" />
+      <module name="eurekaserver" options="-parameters" />
+      <module name="menu" options="-parameters" />
+      <module name="order" options="-parameters" />
     </option>
   </component>
 </project>
